@@ -1,0 +1,34 @@
+﻿<Window x:Class="DriveBackupManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DriveBackupManagement"
+        mc:Ignorable="d"
+        Title="ㄌㄌ的壓縮管理" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <ListView Grid.Row="0" x:Name="lv_DirListView" VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn Width="Auto" Header="#">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Index}" IsChecked="{Binding Selected}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding DirName}" Header="Folder name" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding DirPath}" Header="Directory path" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Completed}" Header="Compression completed" Width="180"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Row="1" Content="Folder compression" Width="150" HorizontalAlignment="Right" Click="btn_Click"/>
+    </Grid>
+</Window>
